@@ -12,6 +12,7 @@ class Sample extends Component {
           Hello Sample
         </Text>
       </View>
+
     );
   }
 }

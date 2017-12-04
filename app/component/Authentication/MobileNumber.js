@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback, Platform } from 'react-native';
-import Styles from '../../styles/MobileNumber';
+import Styles from '../../styles/Auth/MobileNumber';
 
 const mobileNumberInputStyle = Platform.select(Styles.textInput);
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 // import { StackNavigator } from 'react-navigation';
-import Styles from '../../styles/Auth';
+import Styles from '../../styles/Auth/Auth';
 import background from '../../assets/img/onboardingbackground.png';
 import MobileNumber from './MobileNumber';
 import OTP from './OTP';

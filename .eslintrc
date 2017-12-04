@@ -52,6 +52,7 @@
       "ignoreTemplateLiterals": true
     }],
     "no-plusplus": 0,
-    "no-use-before-define": "warn"
+    "no-use-before-define": "warn",
+    "object-curly-newline": "warn"
   }
 }

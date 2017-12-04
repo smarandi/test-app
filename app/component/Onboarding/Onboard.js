@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
-import Styles from '../../styles/Onboard';
+import Styles from '../../styles/Common/Onboard';
 import background from '../../assets/img/onboardingbackground.png';
 import firstImage from '../../assets/img/onboarding-1.png';
 

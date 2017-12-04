@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
-import styles from '../../styles/Register';
+import styles from '../../styles/Auth/Register';
 
 // const mobileNumberInputStyle = Platform.select(styles.textInput);
 // const fullWidthTextInput = Platform.select(styles.fullWidthTextInput);

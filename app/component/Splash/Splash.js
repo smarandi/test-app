@@ -6,8 +6,8 @@ import { StackNavigator } from 'react-navigation';
 import { SplashActions } from './SplashActions';
 import Onboard from '../Onboarding/Onboard';
 import Auth from '../Authentication/AuthNavigation';
-import Home from '../Home/AppNavigation';
-import Styles from '../../styles/Splash';
+import Home from '../AppNavigation';
+import Styles from '../../styles/Common/Splash';
 import logo from '../../assets/img/logo.png';
 
 @connect(store => ({ splash: store.splash }))
