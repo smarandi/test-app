@@ -1,26 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image, Dimensions } from 'react-native';
+import { Text, View, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import { Container, Header, Content, List, ListItem, Icon, Left, Body, Right, Switch } from 'native-base';
 import COLORS from '../../styles/Common/Colors';
 import MoreStyles from '../../styles/More/More';
 
 import CampaignImage from '../../assets/img/more/campaign.png';
+import FacebookIcon from '../../assets/img/more/facebook.png';
+import InstagramIcon from '../../assets/img/more/instagram.png';
+import LinkedInIcon from '../../assets/img/more/linkedin.png';
 
-// const ScreenWidth = Dimensions.get('window').width;
-// noinspection JSAnnotator
-// const campaigns = [// [1, 2, 3, 4, 5];
-//   {
-//     image: CampaignImage,
-//     title: 'Inspire\'s Corner: Campaign No. 1',
-//   }, {
-//     image: CampaignImage,
-//     title: 'Inspire\'s Corner: Campaign No. 2',
-//   }, {
-//     image: CampaignImage,
-//     title: 'Inspire\'s Corner: Campaign No. 3',
-//   },
-// ];
+import Help from '../../assets/img/more/help.png';
+import ChevronRight from '../../assets/img/more/chevron-right.png';
+import Profile from '../../assets/img/more/profile.png';
+import Phone from '../../assets/img/more/phone.png';
+import Terms from '../../assets/img/more/terms.png';
 
 class More extends Component {
   static navigationOptions = {
@@ -48,15 +43,93 @@ class More extends Component {
           </View>
         </View>
         <View style={MoreStyles.socialMediaContainer}>
-          <Text>Social Media Links</Text>
+          <Text style={MoreStyles.socialMediaText}>
+            Social Media Links
+          </Text>
+          <View style={MoreStyles.socialMediaIconContainer}>
+            <Image
+              accessible
+              source={FacebookIcon}
+              style={MoreStyles.socialMediaIcons}
+              resizeMode="cover"
+            />
+            <Image
+              accessible
+              source={InstagramIcon}
+              style={MoreStyles.socialMediaIcons}
+              resizeMode="cover"
+            />
+            <Image
+              accessible
+              source={LinkedInIcon}
+              style={MoreStyles.socialMediaIcons}
+              resizeMode="cover"
+            />
+          </View>
         </View>
         <View style={MoreStyles.settingsContainer}>
-          <Text>Parent App</Text>
-          <Text>Your Profile</Text>
+          <TouchableOpacity style={MoreStyles.actionButtonStyle}>
+            <View style={MoreStyles.actionButtonLeftLabelContainer}>
+              <Image
+                source={Phone}
+                style={MoreStyles.actionIcons}
+                resizeMode="contain"
+              />
+              <Text> Parent App </Text>
+            </View>
+            <Image
+              source={ChevronRight}
+              style={MoreStyles.actionIconChevron}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={MoreStyles.actionButtonStyle}>
+            <View style={MoreStyles.actionButtonLeftLabelContainer}>
+              <Image
+                source={Profile}
+                style={MoreStyles.actionIcons}
+                resizeMode="contain"
+              />
+              <Text> Your Profile </Text>
+            </View>
+            <Image
+              source={ChevronRight}
+              style={MoreStyles.actionIconChevron}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         </View>
         <View style={MoreStyles.aboutContainer}>
-          <Text>Help & Feedback</Text>
-          <Text>Terms & Conditions</Text>
+          <TouchableOpacity style={MoreStyles.actionButtonStyle}>
+            <View style={MoreStyles.actionButtonLeftLabelContainer}>
+              <Image
+                source={Help}
+                style={MoreStyles.actionIcons}
+                resizeMode="contain"
+              />
+              <Text> Help & Feedback </Text>
+            </View>
+            <Image
+              source={ChevronRight}
+              style={MoreStyles.actionIconChevron}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={MoreStyles.actionButtonStyle}>
+            <View style={MoreStyles.actionButtonLeftLabelContainer}>
+              <Image
+                source={Terms}
+                style={MoreStyles.actionIcons}
+                resizeMode="contain"
+              />
+              <Text> Terms & Conditions </Text>
+            </View>
+            <Image
+              source={ChevronRight}
+              style={MoreStyles.actionIconChevron}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -64,13 +137,3 @@ class More extends Component {
 }
 
 export default More;
-
-
-/* <Carousel */
-/* ref={(d) => { this._carousel = d; }} */
-/* data= */
-/* renderItem={(item, index) => this.renderItem(item, index)} */
-/* sliderWidth={300} */
-/* itemWidth={300} */
-/* /> */
-
