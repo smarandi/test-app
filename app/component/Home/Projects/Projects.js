@@ -6,7 +6,7 @@ import DEMO_IMAGE from '../../../assets/img/home/projects/graphics-design.png';
 
 import ProjectStyles from '../../../styles/Explore/Projects';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const styles = StyleSheet.create(ProjectStyles);
 
 const entries = [2, 3, 4, 5, 6, 7];

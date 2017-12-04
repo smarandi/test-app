@@ -38,7 +38,7 @@ const style = {
   },
   aboutContainer: {
     marginTop: '2%',
-    height: '18%',
+    height: '17.5%',
     backgroundColor: COLORS.WHITE,
     // borderColor: 'yellow',
     // borderWidth: 1,

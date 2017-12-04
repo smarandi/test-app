@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
-import { Container, Header, Content, List, ListItem, Icon, Left, Body, Right, Switch } from 'native-base';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+// import Carousel from 'react-native-snap-carousel';
+import PropTypes from 'prop-types';
+
 import COLORS from '../../styles/Common/Colors';
 import MoreStyles from '../../styles/More/More';
 
@@ -22,6 +23,10 @@ class More extends Component {
     title: 'More',
     headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
     headerTitleStyle: { color: COLORS.WHITE },
+  };
+
+  static propTypes={
+    navigation: PropTypes.object.isRequired,
   };
 
   render() {
@@ -68,7 +73,10 @@ class More extends Component {
           </View>
         </View>
         <View style={MoreStyles.settingsContainer}>
-          <TouchableOpacity style={MoreStyles.actionButtonStyle}>
+          <TouchableOpacity
+            style={MoreStyles.actionButtonStyle}
+            onPress={() => this.props.navigation.navigate('Parent')}
+          >
             <View style={MoreStyles.actionButtonLeftLabelContainer}>
               <Image
                 source={Phone}
@@ -100,7 +108,10 @@ class More extends Component {
           </TouchableOpacity>
         </View>
         <View style={MoreStyles.aboutContainer}>
-          <TouchableOpacity style={MoreStyles.actionButtonStyle}>
+          <TouchableOpacity
+            style={MoreStyles.actionButtonStyle}
+            onPress={() => this.props.navigation.navigate('Help')}
+          >
             <View style={MoreStyles.actionButtonLeftLabelContainer}>
               <Image
                 source={Help}
@@ -115,7 +126,10 @@ class More extends Component {
               resizeMode="contain"
             />
           </TouchableOpacity>
-          <TouchableOpacity style={MoreStyles.actionButtonStyle}>
+          <TouchableOpacity
+            style={MoreStyles.actionButtonStyle}
+            onPress={() => this.props.navigation.navigate('Policy')}
+          >
             <View style={MoreStyles.actionButtonLeftLabelContainer}>
               <Image
                 source={Terms}
