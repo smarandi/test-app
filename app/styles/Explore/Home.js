@@ -5,41 +5,36 @@ const style = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    height: 600,
+    marginTop: '-10%',
   },
   courseCard: {
     backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY,
     width: '85%',
     height: '75%',
     alignItems: 'center',
-    borderRadius: 15,
-    flexWrap: 'nowrap',
+    borderRadius: 10,
     flexDirection: 'row',
-    // padding: 20,
   },
   columnLeft: {
-    // flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    alignContent: 'space-around',
-    paddingLeft: '10%',
+    flex: 6,
+    height: '100%',
+    justifyContent: 'space-between',
   },
   columnRight: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 4,
+    height: '90%',
+    justifyContent: 'space-between',
   },
   courseLogoContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
+    flex: 6,
   },
   courseLogoIconContainer: {
     borderRadius: 15,
     width: 135,
     height: 135,
-    // borderStyle: 'solid',
-    // borderWidth: 1,
-    // borderColor: 'black',
   },
   courseIcon: {
     width: 175,
@@ -47,10 +42,12 @@ const style = {
   },
   label: {
     color: COLORS.WHITE,
+    backgroundColor: 'transparent',
   },
   courseVideoContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 4,
   },
   videoIconContainer: {
     borderRadius: 5,
@@ -95,7 +92,16 @@ const style = {
   seeJourney: {
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 4,
   },
 };
 
 export default style;
+//
+// borderStyle: 'solid',
+//   borderWidth: 1,
+//   borderColor: 'yellow',
+//
+// borderStyle: 'solid',
+//   borderWidth: 1,
+//   borderColor: 'red',

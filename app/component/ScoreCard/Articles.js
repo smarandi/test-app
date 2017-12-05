@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Image, View, Text } from 'react-native';
-import { Container, DeckSwiper, Card, CardItem, Body, } from 'native-base';
+import { Container, DeckSwiper, Card, CardItem, Body } from 'native-base';
 
 import ArticleStyles from '../../styles/ScoreCard/Articles';
 
