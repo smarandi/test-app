@@ -3,14 +3,16 @@
 // import { Text, View, Button, StyleSheet, Image } from 'react-native';
 // import Quiz from './Quiz/Quiz';
 import { TabNavigator } from 'react-navigation';
+
 import Explore from './Explore/ExploreWrapper';
 import ScoreCard from './ScoreCard/ScoreCardWrapper';
 import More from './More/MoreWrapper';
+import Quiz from './Quiz/QuizWrapper';
 import COLORS from '../styles/Common/Colors';
 
 
 const Routes = {
-  // Quiz: { screen: Quiz },
+  Quiz: { screen: Quiz },
   Explore: { screen: Explore },
   ScoreCard: { screen: ScoreCard },
   More: { screen: More },

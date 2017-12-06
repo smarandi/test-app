@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Dimensions, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 
+import COLORS from '../../../styles/Common/Colors';
 import DEMO_IMAGE from '../../../assets/img/home/projects/graphics-design.png';
 
 import ProjectStyles from '../../../styles/Explore/Projects';
@@ -23,13 +24,15 @@ const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' 
 class Projects extends Component {
   static navigationOptions = {
     title: 'Projects',
+    headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
+    headerTitleStyle: { color: COLORS.WHITE },
   };
 
   renderItem = ({ item, index }) => (
     <View
       index={index}
       style={{
-        width, height: '100%', justifyContent: 'center', alignItems: 'center'
+        width, height: '100%', justifyContent: 'center', alignItems: 'center',
       }}
     >
       <View style={styles.sliderItem}>

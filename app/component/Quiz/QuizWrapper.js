@@ -3,15 +3,15 @@ import { Image, StyleSheet } from 'react-native';
 
 import AppNavigationStyles from '../../styles/Explore/Explore';
 import MoreIcon from '../../assets/img/explore/more.png';
-import MoreNavigation from './MoreNavigation';
+import MoreNavigation from './QuizNavigation';
 
 const styles = StyleSheet.create(AppNavigationStyles);
 
-class MoreWrapper extends Component {
+class QuizWrapper extends Component {
   static navigationOptions = {
     header: null,
     headerMode: 'none',
-    tabBarLabel: 'More',
+    tabBarLabel: 'Quiz',
     tabBarIcon: ({ tintColor }) => (
       <Image
         source={MoreIcon}
@@ -26,4 +26,4 @@ class MoreWrapper extends Component {
   }
 }
 
-export default MoreWrapper;
+export default QuizWrapper;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, WebView } from 'react-native';
 import YouTube from 'react-native-youtube';
 
+import COLORS from '../../../styles/Common/Colors';
 import VideoStyles from '../../../styles/Explore/Video';
 
 const styles = StyleSheet.create(VideoStyles);
@@ -10,6 +11,8 @@ const styles = StyleSheet.create(VideoStyles);
 class Video extends Component {
   static navigationOptions = {
     title: 'Video',
+    headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
+    headerTitleStyle: { color: COLORS.WHITE },
   };
 
   render() {

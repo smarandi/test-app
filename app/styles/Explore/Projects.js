@@ -32,9 +32,6 @@ const style = {
   },
   sliderTextContentContainer: {
     width: '100%',
-    borderStyle: 'solid',
-    borderColor: 'green',
-    borderWidth: 1,
     height: '60%',
     padding: 15,
   },

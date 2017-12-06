@@ -94,7 +94,10 @@ class Home extends Component {
             <Text style={styles.label}>Projects</Text>
           </View>
           <View style={styles.courseActivity}>
-            <TouchableOpacity style={styles.courseActivityIconContainer}>
+            <TouchableOpacity
+              style={styles.courseActivityIconContainer}
+              onPress={() => this.props.navigation.navigate('Blog')}
+            >
               <Image
                 source={BLOG}
                 style={styles.courseActivityIcon}

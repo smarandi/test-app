@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
+import COLORS from '../../../styles/Common/Colors';
 import StoryStyles from '../../../styles/Explore/Stories';
 import DemoImage from '../../../assets/img/home/stories/story-demo.png';
 
@@ -15,6 +16,8 @@ const date = '2nd Nov 2017';
 class Stories extends Component {
   static navigationOptions = {
     title: 'Stories',
+    headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
+    headerTitleStyle: { color: COLORS.WHITE },
   };
 
   render() {
