@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet } from 'react-native';
 
 import COLORS from '../../../styles/Common/Colors';
 import StoryStyles from '../../../styles/Explore/Stories';
 import DemoImage from '../../../assets/img/home/stories/story-demo.png';
+import StoryPicker from './StoryPicker';
 
 const styles = StyleSheet.create(StoryStyles);
 
@@ -13,20 +14,33 @@ const quote = 'Quisque condimentum auctor felis, ac cursus massa venenatis sit a
 
 const date = '2nd Nov 2017';
 
+const data = [
+  { key: 1 },
+  { key: 2 },
+  { key: 3 },
+  { key: 4 },
+  { key: 5 },
+  { key: 6 },
+];
+
 class Stories extends Component {
   static navigationOptions = {
-    title: 'Stories',
-    headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
-    headerTitleStyle: { color: COLORS.WHITE },
+    header: null,
+    headerMode: 'none',
+    // title: 'Stories',
+    // headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
+    // headerTitleStyle: { color: COLORS.WHITE, textAlign: 'left' },
   };
+
+  renderItem = (item, index) => (<Text key={index}>Hello Clickable Stuff</Text>);
 
   render() {
     return (
       <View>
         <View style={styles.scrollablePicker}>
-          <Text>
-            Scrollable List
-          </Text>
+          <View style={{ flex: 1 }}>
+            <StoryPicker />
+          </View>
         </View>
         <View style={styles.storyHeaderContainer}>
           <View>
@@ -86,4 +100,20 @@ export default Stories;
 //     {date}
 //   </Text>
 // </View>
-
+//
+// <ScrollView
+//   style={{
+//     height: 100,
+//     width: 300,
+//     borderColor: 'green',
+//     borderWidth: 1,
+//     borderStyle: 'solid',
+//   }}
+// >
+//   <FlatList
+//     horizontal
+//     style={{ height: 400 }}
+//     data={data}
+//     renderItem={this.renderItem}
+//   />
+// </ScrollView>

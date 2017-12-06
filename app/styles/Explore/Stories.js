@@ -4,6 +4,9 @@ const style = {
   scrollablePicker: {
     height: '25%',
     backgroundColor: COLORS.WHITE,
+    // borderColor: 'red',
+    // borderWidth: 1,
+    // borderStyle: 'solid',
   },
   storyHeaderContainer: {
     height: '75%',
@@ -52,6 +55,18 @@ const style = {
     height: '50%',
     width: '100%',
     justifyContent: 'flex-end',
+  },
+  storyPickerImageStyle: {
+    width: 100,
+    height: 100,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  storyPickerImageNotSelected: {
+    width: 75,
+    height: 75,
+    opacity: 0.5,
+
   },
 };
 

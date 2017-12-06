@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Dimensions, StyleSheet, Image, Icon } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 
 import COLORS from '../../../styles/Common/Colors';

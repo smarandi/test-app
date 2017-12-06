@@ -69,9 +69,16 @@ const style = {
     height: 125,
   },
   campaignTitle: {
-    fontSize: 18,
-    textAlign: 'center',
-    fontWeight: '300',
+    ios: {
+      fontSize: 18,
+      textAlign: 'center',
+      fontWeight: '300',
+    },
+    android: {
+      fontSize: 16,
+      textAlign: 'center',
+      fontWeight: '300',
+    },
   },
   campaignTitleContainer: {
     margin: '1%',

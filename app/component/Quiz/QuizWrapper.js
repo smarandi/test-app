@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import AppNavigationStyles from '../../styles/Explore/Explore';
-import MoreIcon from '../../assets/img/explore/more.png';
+import QuizIcon from '../../assets/img/explore/quiz.png';
 import MoreNavigation from './QuizNavigation';
 
 const styles = StyleSheet.create(AppNavigationStyles);
@@ -14,7 +14,7 @@ class QuizWrapper extends Component {
     tabBarLabel: 'Quiz',
     tabBarIcon: ({ tintColor }) => (
       <Image
-        source={MoreIcon}
+        source={QuizIcon}
         style={[styles.icon, { tintColor }]}
         resizeMode="contain"
       />

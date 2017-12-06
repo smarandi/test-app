@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 
+import COLORS from '../../../styles/Common/Colors';
 import StoryStyles from '../../../styles/Explore/StoryDetails';
 import DemoImage from '../../../assets/img/home/stories/story-demo-2.png';
 
@@ -28,9 +29,12 @@ const styles = StyleSheet.create(StoryStyles);
 
 class StoryDetails extends Component {
   static navigationOptions = {
-    title: 'Stories',
+    header: null,
+    headerMode: 'none',
+    // title: 'Stories',
+    // headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
+    // headerTitleStyle: { color: COLORS.WHITE },
   };
-
   render() {
     return (
       <View>

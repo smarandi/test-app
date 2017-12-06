@@ -51,17 +51,24 @@ class ScoreCard extends Component {
 
   render() {
     return (
-      <View>
-        <Header />
-        <ScrollView>
+      <ScrollView>
+        <View style={{
+          width: '100%',
+          height: '200%',
+        }}
+        >
+          <Header />
           <Articles {...articles} />
-          <ProgressGraph />
-          <TimeGraph />
           <CallToAction />
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 export default ScoreCard;
+//
+// <Articles {...articles} />
+// <ProgressGraph />
+// <TimeGraph />
+// <CallToAction />

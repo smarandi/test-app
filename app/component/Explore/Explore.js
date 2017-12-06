@@ -25,7 +25,7 @@ class Home extends Component {
   static navigationOptions = {
     title: 'Home',
     headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
-    headerTitleStyle: { color: COLORS.WHITE },
+    headerTitleStyle: { color: COLORS.WHITE, alignSelf: 'flex-start' },
   };
 
   renderItem = item => (
@@ -70,7 +70,7 @@ class Home extends Component {
           <View style={styles.courseActivity}>
             <TouchableOpacity
               style={styles.courseActivityIconContainer}
-              onPress={() => this.props.navigation.navigate('StoryNavigation')}
+              onPress={() => this.props.navigation.navigate('Story')}
             >
               <Image
                 source={STORIES}

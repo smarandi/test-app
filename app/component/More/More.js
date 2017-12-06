@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
-// import Carousel from 'react-native-snap-carousel';
+import { Text, View, Image, TouchableOpacity, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 
 import COLORS from '../../styles/Common/Colors';
@@ -43,7 +42,7 @@ class More extends Component {
               />
             </View>
             <View style={MoreStyles.campaignTitleContainer}>
-              <Text style={MoreStyles.campaignTitle}>Inspire's Corner: Campaign No. 1</Text>
+              <Text style={Platform.select(MoreStyles.campaignTitle)}>Inspire's Corner: Campaign No. 1</Text>
             </View>
           </View>
         </View>

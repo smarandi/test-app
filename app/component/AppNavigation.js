@@ -12,8 +12,8 @@ import COLORS from '../styles/Common/Colors';
 
 
 const Routes = {
-  Quiz: { screen: Quiz },
   Explore: { screen: Explore },
+  Quiz: { screen: Quiz },
   ScoreCard: { screen: ScoreCard },
   More: { screen: More },
 };
