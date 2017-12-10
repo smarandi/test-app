@@ -4,8 +4,8 @@ import ScoreCard from './ScoreCard';
 import Search from './Search';
 
 const Routes = {
-  ScoreCard: { screen: ScoreCard },
   Search: { screen: Search },
+  ScoreCard: { screen: ScoreCard },
 };
 
 export default StackNavigator(Routes);

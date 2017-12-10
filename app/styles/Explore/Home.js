@@ -15,6 +15,10 @@ const style = {
     alignItems: 'center',
     borderRadius: 10,
     flexDirection: 'row',
+    shadowColor: '#615f61',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.75,
+    elevation: 1,
   },
   columnLeft: {
     flex: 6,

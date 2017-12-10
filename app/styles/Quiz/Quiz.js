@@ -9,86 +9,90 @@ const style = {
     alignContent: 'center',
     borderRadius: 10,
     marginTop: '10%',
+    shadowColor: '#615f61',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.75,
+    elevation: 1,
   },
-
+  sliderItemHeader: {
+    flex: 1,
+    backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-end',
+    paddingBottom: 10,
+  },
+  scoreContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  highlightedText: {
+    fontSize: 24,
+    color: COLORS.MAGENTA_SHADE,
+  },
+  infoText: {
+    fontSize: 12,
+    color: COLORS.WHITE,
+  },
+  courseLogoContainer: {
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  logo: {
+    height: 65,
+    width: 75,
+    borderRadius: 5,
+  },
+  courseTitle: {
+    fontSize: 18,
+    color: COLORS.WHITE,
+  },
+  highlightedQuizIndexContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  quizCountText: {
+    fontSize: 16,
+    color: COLORS.WHITE,
+  },
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+  },
+  menuContainer: {
+    flex: 3,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  touchableStyle: {
+    ios: {
+      width: 33,
+      height: 33,
+      borderRadius: 15,
+      backgroundColor: '#c0c0c0',
+      position: 'absolute',
+      top: '11%',
+      left: '11%',
+    },
+    android: {
+      width: 33,
+      height: 33,
+      borderRadius: 15,
+      backgroundColor: '#c0c0c0',
+      position: 'absolute',
+      top: '11%',
+      left: '15.5%',
+    },
+  },
 };
 
 export default style;
-//
 // borderStyle: 'solid',
 //   borderColor: 'red',
 //   borderWidth: 1,
-//
-// const style = {
-//   icon: {
-//     width: 28,
-//     height: 13,
-//   },
-//   carouselContainer: {
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     paddingTop: 0,
-//   },
-//   sliderItem: {
-//     backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY,
-//     width: '90%',
-//     height: '85%',
-//     justifyContent: 'center',
-//     alignContent: 'center',
-//     borderRadius: 10,
-//   },
-//   sliderImageContainer: {
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     width: '100%',
-//     height: '40%',
-//     padding: 10,
-//   },
-//   sliderImage: {
-//     width: '100%',
-//     height: '100%',
-//     borderRadius: 10,
-//   },
-//   sliderTextContentContainer: {
-//     width: '100%',
-//     height: '60%',
-//     padding: 15,
-//   },
-//   headerContainer: {
-//     flexDirection: 'row',
-//   },
-//   titleContainer: {
-//     width: '70%',
-//   },
-//   title: {
-//     fontSize: 20,
-//     color: COLORS.WHITE,
-//     fontWeight: '400',
-//   },
-//   dateContainer: {
-//     width: '30%',
-//     justifyContent: 'flex-end',
-//     alignItems: 'flex-end',
-//   },
-//   date: {
-//     fontSize: 12,
-//     color: COLORS.WHITE,
-//   },
-//   descriptionContainer: {
-//     paddingTop: 15,
-//     paddingBottom: 15,
-//   },
-//   description: {
-//     fontSize: 18,
-//     color: COLORS.WHITE,
-//     textAlign: 'justify',
-//     height: '70%',
-//   },
-//   readMoreText: {
-//     color: COLORS.WHITE,
-//   },
-//   readMoreContainer: {
-//     justifyContent: 'flex-end',
-//     alignItems: 'center',
-//   },
-// };

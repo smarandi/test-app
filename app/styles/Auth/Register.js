@@ -31,7 +31,7 @@ const style = {
       borderRightColor: 'transparent',
       borderBottomColor: 'grey',
       width: '100%',
-      paddingTop: 10,
+      paddingTop: 15,
     },
     android: {
       fontSize: textInputFontSize,

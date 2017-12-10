@@ -7,12 +7,12 @@ import Blog from '../Home/Blogs/Blogs';
 import Video from '../Home/Video/Video';
 import Journey from '../Home/Journey/Journey';
 import Projects from '../Home/Projects/Projects';
-import Story from '../Home/Stories/StoryWrapper';
+import Story from '../Home/Stories/Stories';
 
 const Routes = {
   Home: { screen: Home },
-  Story: { screen: Story },
   Journey: { screen: Journey },
+  Story: { screen: Story },
   Projects: { screen: Projects },
   Blog: { screen: Blog },
   Video: { screen: Video },

@@ -5,9 +5,9 @@ import QuizAnalysis from './QuizAnalysis';
 import QuestionAnswer from './QuestionAnswer';
 
 const Routes = {
+  Quiz: { screen: Quiz },
   QuizAnalysis: { screen: QuizAnalysis },
   QuestionAnswer: { screen: QuestionAnswer },
-  Quiz: { screen: Quiz },
 };
 
 export default StackNavigator(Routes);

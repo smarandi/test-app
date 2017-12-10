@@ -13,44 +13,53 @@ class Articles extends Component {
     articleList: PropTypes.array.isRequired,
   };
 
-  renderItem = article => (
-    <Card style={{ elevation: 3 }}>
-      <CardItem>
-        <Body>
-          <View style={ArticleStyles.cardStyle} >
-            <View style={ArticleStyles.cardIconAndTitleContainer}>
-              <View style={ArticleStyles.cardIconContainer}>
-                <Image
-                  source={article.icon}
-                  style={ArticleStyles.articleIcon}
-                  resizeMode="cover"
-                />
+  renderItem = (article) => {
+    const {
+      blog_name: title,
+      image_link: link,
+      modified_date: date,
+    } = article;
+    return (
+      <Card style={{ elevation: 3 }}>
+        <CardItem>
+          <Body>
+            <View style={ArticleStyles.cardStyle}>
+              <View style={ArticleStyles.cardIconAndTitleContainer}>
+                <View style={ArticleStyles.cardIconContainer}>
+                  <Image
+                    source={{ uri: link }}
+                    style={ArticleStyles.articleIcon}
+                    resizeMode="cover"
+                  />
+                </View>
+                <View style={ArticleStyles.cardTitleContainer}>
+                  <Text style={ArticleStyles.cardTitle}>
+                    {title}
+                  </Text>
+                </View>
               </View>
-              <View style={ArticleStyles.cardTitleContainer}>
-                <Text style={ArticleStyles.cardTitle}>
-                  {article.title}
-                </Text>
+              <View style={ArticleStyles.cardBottomContainer}>
+                <View>
+                  <Text style={ArticleStyles.cardBottomText}>{date}</Text>
+                </View>
+                <View>
+                  <Text style={ArticleStyles.cardBottomText}>0 min</Text>
+                </View>
+                <View style={ArticleStyles.blogTypeContainer}>
+                  <Text style={ArticleStyles.cardBottomText}>Knowledge</Text>
+                </View>
               </View>
             </View>
-            <View style={ArticleStyles.cardBottomContainer}>
-              <View>
-                <Text style={ArticleStyles.cardBottomText}>{article.date}</Text>
-              </View>
-              <View>
-                <Text style={ArticleStyles.cardBottomText}>{article.estimatedReadTime} min</Text>
-              </View>
-              <View style={ArticleStyles.blogTypeContainer}>
-                <Text style={ArticleStyles.cardBottomText}>{article.type}</Text>
-              </View>
-            </View>
-          </View>
-        </Body>
-      </CardItem>
-    </Card>
-  );
+          </Body>
+        </CardItem>
+      </Card>
+    );
+  };
 
   render() {
-    const { articlesRead, totalArticles, totalTimeSpent, articleList } = this.props;
+    const {
+      articlesRead, totalArticles, totalTimeSpent, articleList,
+    } = this.props;
     return (
       <View style={ArticleStyles.articleParent}>
         <View style={ArticleStyles.textSection}>

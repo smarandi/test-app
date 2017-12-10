@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Text, View, Image, TouchableOpacity, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 
@@ -12,7 +13,7 @@ import ExcellentScore from '../../assets/img/quiz/excellent-score.png';
 import GoodScore from '../../assets/img/quiz/good-score.png';
 
 import Questions from './SampleQuestions.json';
-import Video from "../Home/Video/Video";
+import Video from '../Home/Video/Video';
 
 const question = {
   question_id: 'abc123',
@@ -27,6 +28,10 @@ class QuestionAnswer extends Component {
     title: 'Quizzes',
     headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
     headerTitleStyle: { color: COLORS.WHITE },
+  };
+
+  static propTypes={
+    navigation: PropTypes.object.isRequired,
   };
 
   state = {
@@ -48,6 +53,11 @@ class QuestionAnswer extends Component {
     }
     // If End of Questions,
     this.setState({ quizEnded: true });
+  };
+
+  handleActionClick = () => {
+    this.setState({ quizEnded: false });
+    this.props.navigation.navigate('QuizAnalysis');
   };
 
   renderOptions = (option, index) => (
@@ -121,7 +131,7 @@ class QuestionAnswer extends Component {
                   <Text style={{ fontSize: 20, color: COLORS.WHITE }}>/10</Text>
                 </View>
               </View>
-              <TouchableOpacity style={Platform.select(QuestionAnswerStyles.modalCta)} onPress={() => this.setState({ quizEnded: false })}>
+              <TouchableOpacity style={Platform.select(QuestionAnswerStyles.modalCta)} onPress={() => this.handleActionClick()}>
                 <Text style={QuestionAnswerStyles.modalCtaText}>Analysis</Text>
               </TouchableOpacity>
             </View>

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Dimensions, Platform, Image, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import { Button, Icon, Fab } from 'native-base';
 import Carousel from 'react-native-snap-carousel';
 import Modal from 'react-native-modal';
 
 import COLORS from '../../styles/Common/Colors';
-import Search from '../../assets/img/quiz/search.png';
+import CourseLogo from '../../assets/img/quiz/course-logo.png';
+import QuizMenuBackground from '../../assets/img/quiz/quiz-background-1.png';
 
 import QuizStyles from '../../styles/Quiz/Quiz';
 
 const { width } = Dimensions.get('window');
-// const horizontalMargin = 20;
-// const itemWidth = width + (horizontalMargin * 2);
-// const itemHeight = height;
+
 const entries = [2, 3, 4, 5, 6, 7];
 
 
@@ -21,6 +21,10 @@ class Quiz extends Component {
     title: 'Quizzes',
     headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
     headerTitleStyle: { color: COLORS.WHITE },
+  };
+
+  static propTypes = {
+    navigation: PropTypes.object.isRequired,
   };
 
   state = {
@@ -41,21 +45,48 @@ class Quiz extends Component {
       height: '100%',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      borderStyle: 'solid',
-      borderColor: 'red',
-      borderWidth: 1,
+      backgroundColor: COLORS.WHITE,
     }}
     >
       <View style={QuizStyles.sliderItem}>
-        <View style={{ flex: 1 }} />
-        <View style={{ flex: 4 }} />
+        <View style={QuizStyles.sliderItemHeader}>
+          <View style={QuizStyles.scoreContainer}>
+            <Text style={QuizStyles.highlightedText}>7</Text>
+            <Text style={QuizStyles.infoText}>Average Score</Text>
+          </View>
+          <View style={QuizStyles.courseLogoContainer}>
+            <Image
+              source={CourseLogo}
+              style={QuizStyles.logo}
+            />
+            <Text style={QuizStyles.courseTitle}>Graphic Design</Text>
+          </View>
+          <View style={QuizStyles.scoreContainer}>
+            <View style={QuizStyles.highlightedQuizIndexContainer}>
+              <Text style={QuizStyles.highlightedText}>4</Text>
+              <Text style={QuizStyles.quizCountText}> /10</Text>
+            </View>
+            <Text style={QuizStyles.infoText}>Quizzes Played</Text>
+          </View>
+        </View>
+        <View style={QuizStyles.menuContainer}>
+          <Image
+            source={QuizMenuBackground}
+            style={QuizStyles.backgroundImage}
+            resizeMode="contain"
+          />
+          <TouchableOpacity
+            style={Platform.select(QuizStyles.touchableStyle)}
+            onPress={() => this.props.navigation.navigate('QuestionAnswer')}
+          />
+        </View>
       </View>
     </View>
   );
 
   render() {
     return (
-      <View>
+      <View style={{ backgroundColor: COLORS.WHITE }}>
         <Carousel
           ref={(c) => { this._carousel = c; }}
           data={entries}
@@ -63,7 +94,6 @@ class Quiz extends Component {
           sliderWidth={width}
           itemWidth={width}
         />
-
       </View>
     );
   }

@@ -33,7 +33,7 @@ class Splash extends Component {
    */
   componentDidMount() {
     this.props.dispatch(SplashActions.load());
-    setTimeout(() => this.props.navigation.navigate('Home'), 0);
+    setTimeout(() => this.props.navigation.navigate('Auth'), 1000);
   }
 
   render() {
@@ -62,12 +62,3 @@ export default StackNavigator({
   Auth: { screen: Auth },
   Home: { screen: Home },
 });
-
-/* TODO: REMOVE THIS CODE */
-
-// const instructions = Platform.select({
-//   ios: 'Press Cmd+R to reload,\n' +
-//   'Cmd+D or shake for dev menu',
-//   android: 'Double tap R on your keyboard to reload,\n' +
-//   'Shake or press menu button for dev menu',
-// });

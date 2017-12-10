@@ -18,7 +18,7 @@ class StoryPicker extends Component {
     selectedIndex: 0,
   };
 
-  selectThisItem = index => this.setState({ selectedIndex: index })
+  selectThisItem = index => this.setState({ selectedIndex: index });
 
   renderItem = (item, index) => (
     <TouchableOpacity
@@ -41,17 +41,18 @@ class StoryPicker extends Component {
 
   render() {
     return (
-      <ScrollView horizontal>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           {data.map((item, index) => this.renderItem(item, index))}
         </View>
-      </ScrollView>
-
     );
   }
 }
 
 export default StoryPicker;
+//
+// <ScrollView horizontal>
+// </ScrollView>
+
 //
 //
 // <TouchableOpacity>

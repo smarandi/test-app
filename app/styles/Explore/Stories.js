@@ -9,7 +9,7 @@ const style = {
     // borderStyle: 'solid',
   },
   storyHeaderContainer: {
-    height: '75%',
+    height: '100%',
   },
   clickableImageStyle: {
     width: '100%',
