@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput, TouchableOpacity, Image, Platform } from 'react-native';
 import { isEmpty, isLength, isMobilePhone, isNumeric } from 'validator';
+
 import Styles from '../../styles/Auth/MobileNumber';
 import AuthStyles from '../../styles/Auth/Auth';
 import background from '../../assets/img/onboardingbackground.png';
@@ -28,11 +29,7 @@ class MobileNumber extends Component {
     text: '',
   };
 
-  handleTextInputChange = (text) => {
-    if (isNumeric(text)) {
-      this.setState({ text });
-    }
-  };
+  handleTextInputChange = text => this.setState({ text })
 
   handleSuccess = (res) => {
     /* TODO: Handle Different Status Codes other than 200 */
@@ -64,6 +61,7 @@ class MobileNumber extends Component {
             <Text style={Styles.mobileViewLabel}> Enter the registered</Text>
             <Text style={Styles.mobileViewLabel}> mobile number.</Text>
             <TextInput
+              maxLength={10}
               value={this.state.text}
               keyboardType="numeric"
               style={mobileNumberInputStyle}

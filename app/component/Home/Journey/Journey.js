@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Text, View, Image, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import { Text, View, Image, ScrollView, Platform, TouchableOpacity, Dimensions } from 'react-native';
 
 import { getJourney } from '../../../services/Explore';
 
@@ -16,6 +16,7 @@ import Stories from '../../../assets/img/journey/stories.png';
 import Blog from '../../../assets/img/journey/blogs.png';
 import Projects from '../../../assets/img/journey/projects.png';
 
+const { height } = Dimensions.get('window');
 // const styles = StyleSheet.create(JourneyStyles);
 @connect(store => ({ auth: store.auth }))
 class Journey extends Component {
@@ -94,7 +95,7 @@ class Journey extends Component {
                     <Text style={JourneyStyles.sectionLabel}>1</Text>
                   </View>
                   <TouchableOpacity style={JourneyStyles.sectionLabelContainer}>
-                    <Text style={JourneyStyles.sectionLabel}>Assesments</Text>
+                    <Text style={JourneyStyles.sectionLabel}>Assesments </Text>
                   </TouchableOpacity>
                 </View>
               </View>

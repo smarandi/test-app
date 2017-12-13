@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Text, View, Dimensions, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import moment from 'moment';
 
 import COLORS from '../../../styles/Common/Colors';
-import DEMO_IMAGE from '../../../assets/img/home/projects/graphics-design.png';
+// import DEMO_IMAGE from '../../../assets/img/home/projects/graphics-design.png';
 
 import ProjectStyles from '../../../styles/Explore/Projects';
 import { getAllProjects } from '../../../services/Explore';
@@ -20,9 +21,9 @@ const styles = StyleSheet.create(ProjectStyles);
 
 // const date = '2nd Nov 2017';
 
-const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
-  'Vivamus tristique tortor sit amet nunc lobortis, facilisis accumsan turpis suscipit. ' +
-  'Curabitur id eleifend ipsum.';
+// const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
+//   'Vivamus tristique tortor sit amet nunc lobortis, facilisis accumsan turpis suscipit. ' +
+//   'Curabitur id eleifend ipsum.';
 
 @connect(store => ({ auth: store.auth, project: store.project }))
 class Projects extends Component {
@@ -58,6 +59,8 @@ class Projects extends Component {
       created_at: date,
       uuid,
     } = item;
+    const { course } = this.props.navigation.state.params;
+
     return (
       <View
         index={uuid}
@@ -82,13 +85,26 @@ class Projects extends Component {
                 <Text style={styles.title}>{title}</Text>
               </View>
               <View style={styles.dateContainer}>
-                <Text style={styles.date}>{date}</Text>
+                <Text style={styles.date}>{moment(date).format('DD-MM-YYYY')}</Text>
               </View>
             </View>
             <View style={styles.descriptionContainer}>
               <Text style={styles.description}>{info}</Text>
             </View>
-            <TouchableOpacity style={styles.readMoreContainer}>
+            <TouchableOpacity
+              style={styles.readMoreContainer}
+              onPress={() => this.props.navigation.navigate(
+                'Detail',
+                {
+                  header: 'Projects',
+                  course,
+                  url: link,
+                  title,
+                  details: info,
+                  date: moment(date).format('DD-MM-YYYY'),
+                },
+              )}
+            >
               <Text style={styles.readMoreText}>Read More</Text>
             </TouchableOpacity>
           </View>

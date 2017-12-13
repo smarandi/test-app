@@ -42,7 +42,7 @@ const style = {
   quoteText: {
     backgroundColor: 'transparent',
     fontSize: 16,
-    color: '#FFF',
+    color: COLORS.WHITE,
     textAlign: 'center',
   },
   quoteContainer: {
@@ -57,17 +57,48 @@ const style = {
     justifyContent: 'flex-end',
   },
   storyPickerImageStyle: {
-    width: 100,
-    height: 100,
-    paddingLeft: 10,
-    paddingRight: 10,
+    ios: {
+      width: 100,
+      height: 100,
+      paddingLeft: 10,
+      paddingRight: 10,
+      borderRadius: 50,
+    },
+    android: {
+      width: 80,
+      height: 80,
+      paddingLeft: 10,
+      paddingRight: 10,
+      borderRadius: 50,
+    },
   },
   storyPickerImageNotSelected: {
     width: 75,
     height: 75,
     opacity: 0.5,
+    borderRadius: 40,
+  },
+  scrollListContainer: {
+    // borderColor: 'red',
+    // borderStyle: 'solid',
+    // borderWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: '5%',
+    paddingBottom: '5%',
+  },
+  touchableNav: {
+    position: 'absolute',
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'transparent',
 
   },
 };
 
 export default style;
+// borderColor: 'red',
+// borderStyle: 'solid',
+// borderWidth: 1,

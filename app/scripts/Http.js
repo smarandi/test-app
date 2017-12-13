@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
 const raiseStatus = (response) => {
-  console.log('Response', response);
+  console.log('Raw Response', response);
   if (response.status === 200) {
     return JSON.parse(response._bodyText);
   }

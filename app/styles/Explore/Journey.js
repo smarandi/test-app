@@ -7,14 +7,20 @@ const style = {
   },
   background: {
     ios: {
+      flex: 1,
       width: '100%',
       marginTop: '-56%',
       marginBottom: '-56%',
+      top: 0,
+      left: 0,
     },
     android: {
+      flex: 1,
       width: '100%',
-      marginTop: '-35%',
-      marginBottom: '-35%',
+      // marginTop: '-35%',
+      // marginBottom: '-35%',
+      marginTop: '-65%',
+      marginBottom: '-65%',
     },
   },
   infoOverlay: {

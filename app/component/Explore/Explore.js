@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { Container, DeckSwiper } from 'native-base';
 
 import COLORS from '../../styles/Common/Colors';
 import HomeStyles from '../../styles/Explore/Home';
 
-import LOGO from '../../assets/img/home/graphics-design/logo-graphics-design.png';
+import LOGO from '../../assets/img/home/graphics-design/course-logo.png';
 import VIDEO_ICON from '../../assets/img/home/graphics-design/video.png';
 import BLOG from '../../assets/img/home/graphics-design/blogs.png';
 import STORIES from '../../assets/img/home/graphics-design/stories.png';
@@ -18,7 +18,7 @@ import { ExploreActions } from './ExploreActions';
 
 const styles = StyleSheet.create(HomeStyles);
 
-// const courses = ['Graphic Design', 'Architecture', 'Pilot', 'Doctor'];
+const height = Dimensions.get('window').height - 150;
 
 @connect(store => ({ auth: store.auth, explore: store.explore }))
 class Home extends Component {
@@ -39,23 +39,24 @@ class Home extends Component {
     const { token, id } = this.props.auth;
 
     getAllCourse(token, id)
-      .then(data => this.props.dispatch(ExploreActions.loadData(data)));
+      .then(data => this.props.dispatch(ExploreActions.loadData(data)))
+      .catch(err => console.log(err));
   }
 
   renderItem = (item) => {
     const { course_name: course, uuid } = item;
     return (
-      <View style={styles.container}>
+      <View style={{ ...HomeStyles.container, height }}>
         <View style={styles.courseCard}>
           <View style={styles.columnLeft}>
             <View style={styles.courseLogoContainer}>
-              <View style={styles.courseLogoIconContainer}>
-                <Image
-                  style={styles.courseIcon}
-                  source={LOGO}
-                  resizeMode="cover"
-                />
-              </View>
+              {/* <View style={styles.courseLogoIconContainer}> */}
+              <Image
+                style={styles.courseIcon}
+                source={LOGO}
+                resizeMode="contain"
+              />
+              {/* </View> */}
               <Text style={styles.label}>{course}</Text>
             </View>
             <View style={styles.courseVideoContainer}>
@@ -86,7 +87,7 @@ class Home extends Component {
             <View style={styles.courseActivity}>
               <TouchableOpacity
                 style={styles.courseActivityIconContainer}
-                onPress={() => this.props.navigation.navigate('Story', { uuid, plan: this.props.explore.plan })}
+                onPress={() => this.props.navigation.navigate('Story', { uuid, plan: this.props.explore.plan, course })}
               >
                 <Image
                   source={STORIES}
@@ -99,7 +100,7 @@ class Home extends Component {
             <View style={styles.courseActivity}>
               <TouchableOpacity
                 style={styles.courseActivityIconContainer}
-                onPress={() => this.props.navigation.navigate('Projects', { uuid })}
+                onPress={() => this.props.navigation.navigate('Projects', { uuid, plan: this.props.explore.plan, course })}
               >
                 <Image
                   source={PROJECTS}
@@ -112,7 +113,7 @@ class Home extends Component {
             <View style={styles.courseActivity}>
               <TouchableOpacity
                 style={styles.courseActivityIconContainer}
-                onPress={() => this.props.navigation.navigate('Blog', { uuid })}
+                onPress={() => this.props.navigation.navigate('Blog', { uuid, plan: this.props.explore.plan, course })}
               >
                 <Image
                   source={BLOG}
@@ -122,7 +123,6 @@ class Home extends Component {
               </TouchableOpacity>
               <Text style={styles.label}>Blog</Text>
             </View>
-
           </View>
         </View>
       </View>);

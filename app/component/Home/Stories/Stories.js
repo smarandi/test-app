@@ -1,40 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Text, View, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, Image, ScrollView, TouchableOpacity, Platform } from 'react-native';
+import moment from 'moment';
 
 import { getAllStory } from '../../../services/Explore';
 import COLORS from '../../../styles/Common/Colors';
 import StoryStyles from '../../../styles/Explore/Stories';
-import DemoImage from '../../../assets/img/home/stories/story-demo.png';
-import DemoImage2 from '../../../assets/img/home/stories/demo-1.png';
-import StoryPicker from './StoryPicker';
 import { StoryActions } from './StoryActions';
-
-const styles = StyleSheet.create(StoryStyles);
-
-const title = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
-
-const quote = 'Quisque condimentum auctor felis, ac cursus massa venenatis sit amet.';
-
-const date = '2nd Nov 2017';
-
-const data = [
-  { key: 1, name: 'Sam' },
-  { key: 2, name: 'John' },
-  { key: 3, name: 'Mick' },
-  { key: 4, name: 'Rory' },
-  { key: 5, name: 'Joana' },
-  { key: 6, name: 'Kevin' },
-];
-
 
 @connect(store => ({ auth: store.auth, story: store.story }))
 class Stories extends Component {
   static navigationOptions = {
-    header: null,
-    headerMode: 'none',
-
+    // header: null,
+    // headerMode: 'none',
+    title: 'Stories',
+    headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
+    headerTitleStyle: { color: COLORS.WHITE },
   };
 
   static propTypes = {
@@ -50,11 +32,10 @@ class Stories extends Component {
 
   componentDidMount() {
     const { token, id } = this.props.auth;
-    // const { uuid } = this.props.navigation.state.params;
+    const { uuid } = this.props.navigation.state.params;
 
-    console.log(this.props.navigation);
     const formData = new FormData();
-    formData.append('course_uuid', '');
+    formData.append('course_uuid', uuid);
 
     getAllStory(token, id, formData)
       .then(data => this.props.dispatch(StoryActions.loadCourseInfo(data)));
@@ -62,53 +43,81 @@ class Stories extends Component {
 
   selectThisItem = index => this.setState({ selectedIndex: index });
 
-  renderItem = (item, index) => (
-    <TouchableOpacity
-      key={index}
-      onPress={() => this.selectThisItem(index)}
-      style={{
-        paddingLeft: 10,
-        paddingRight: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Image
-        source={DemoImage2}
-        style={
-          index === this.state.selectedIndex ?
-            StoryStyles.storyPickerImageStyle :
-            StoryStyles.storyPickerImageNotSelected
-        }
-        resizeMode="contain"
-      />
-      <Text>{item.name}</Text>
-    </TouchableOpacity>
-  );
+  renderItem = (item, index) => {
+    const { image_link: image } = item;
+    return (
+      <TouchableOpacity
+        key={index}
+        onPress={() => this.selectThisItem(index)}
+        style={{
+          paddingLeft: 10,
+          paddingRight: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Image
+          source={{ uri: image }}
+          style={
+            index === this.state.selectedIndex ?
+              Platform.select(StoryStyles.storyPickerImageStyle) :
+              StoryStyles.storyPickerImageNotSelected
+          }
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
+    );
+  };
 
   render() {
-    console.log(this.props.story);
-    return (
+    const { selectedIndex } = this.state;
+    const { course } = this.props.navigation.state.params;
+
+    return (this.props.story.data.length === 0 ?
+      <Text>Loading...</Text> :
       <View style={{ flex: 1 }}>
         <ScrollView horizontal style={{ flex: 2 }}>
-          <View style={{
-            borderColor: 'red', borderStyle: 'solid', borderWidth: 1, flexDirection: 'row', alignItems: 'center', paddingTop: '5%', paddingBottom: '5%',
-            }}
-          >
-            {data.map((item, index) => this.renderItem(item, index))}
+          <View style={StoryStyles.scrollListContainer}>
+            {this.props.story.data.map((item, index) => this.renderItem(item, index))}
           </View>
         </ScrollView>
         <View style={{ flex: 3 }}>
-          <View style={styles.storyHeaderContainer}>
+          <View style={StoryStyles.storyHeaderContainer}>
             <View>
               <Image
                 accessible
-                source={DemoImage}
-                style={styles.clickableImageStyle}
+                source={{ uri: this.props.story.data[this.state.selectedIndex].image_link }}
+                style={StoryStyles.clickableImageStyle}
                 resizeMode="cover"
               />
             </View>
           </View>
+          <View style={StoryStyles.quoteContainer}>
+            <Text style={StoryStyles.quoteText}>
+              {this.props.story.data[selectedIndex].story_details || null}
+            </Text>
+          </View>
+          <View style={StoryStyles.bottomViewContainer}>
+            <View style={StoryStyles.titleContainer}>
+              <Text style={StoryStyles.titleText}>
+                {this.props.story.data[selectedIndex].story_name}
+              </Text>
+            </View>
+          </View>
+          <TouchableOpacity
+            style={StoryStyles.touchableNav}
+            onPress={() => this.props.navigation.navigate(
+              'Detail',
+              {
+                header: 'Stories',
+                course,
+                url: this.props.story.data[this.state.selectedIndex].image_link,
+                title: this.props.story.data[selectedIndex].story_name,
+                details: this.props.story.data[selectedIndex].story_details,
+                date: moment().format('DD-MM-YYYY'),
+              },
+              )}
+          />
         </View>
       </View>
     );
@@ -116,44 +125,3 @@ class Stories extends Component {
 }
 
 export default Stories;
-//
-// <View>
-//   <View style={styles.scrollablePicker}>
-//     <View style={{ flex: 1 }}>
-//       <StoryPicker />
-//     </View>
-//   </View>
-//   <View style={styles.storyHeaderContainer}>
-//     <View>
-//       <Image
-//         accessible
-//         source={DemoImage}
-//         style={styles.clickableImageStyle}
-//         resizeMode="cover"
-//       />
-//     </View>
-//   </View>
-//   <View style={styles.quoteContainer}>
-//     <Text style={styles.quoteText}>
-//       {quote}
-//     </Text>
-//   </View>
-//   <View style={styles.bottomViewContainer}>
-//     <View style={styles.titleContainer}>
-//       <Text style={styles.titleText}>
-//         {title}
-//       </Text>
-//     </View>
-//     <View style={styles.dateContainer}>
-//       <Text style={styles.dateText}>
-//         {date}
-//       </Text>
-//     </View>
-//   </View>
-//   <Text>
-//     {quote}
-//   </Text>
-// </View>
-// title: 'Stories',
-// headerStyle: { backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY },
-// headerTitleStyle: { color: COLORS.WHITE, textAlign: 'left' },

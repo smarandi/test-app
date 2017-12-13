@@ -34,6 +34,7 @@ const style = {
       fontSize: 20,
       paddingTop: 25,
       width: '70%',
+      textAlign: 'center',
     },
   },
   buttonContainer: {

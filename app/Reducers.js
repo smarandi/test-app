@@ -16,6 +16,7 @@ import blog from './component/Home/Blogs/BlogReducer';
 
 import scoreCard from './component/ScoreCard/ScoreCardReducer';
 
+import quiz from './component/Quiz/QuizReducer';
 
 export default combineReducers({
   splash,
@@ -26,4 +27,5 @@ export default combineReducers({
   project,
   blog,
   scoreCard,
+  quiz,
 });

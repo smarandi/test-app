@@ -2,8 +2,8 @@
 import { AuthActionTypes } from './AuthActions';
 
 const initialState = {
-  token: '',
-  id: '',
+  token: '1d866253385f7497dd2def1a5c0adf58314788f79e014f658ce6f61e749f8b7e',
+  id: 'a7a24e90f734d9204c1a9be60e138bba439ff4101efa2957dc10eed067cda3b4',
   username: '',
   plan: '',
 };

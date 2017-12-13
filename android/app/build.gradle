@@ -100,7 +100,7 @@ android {
     defaultConfig {
         applicationId "com.inspire"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         ndk {
@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-svg')
     compile project(':react-native-youtube')
     compile project(':react-native-vector-icons')
     compile project(':react-native-video')

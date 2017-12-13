@@ -2,11 +2,10 @@ import COLORS from '../Common/Colors';
 
 const style = {
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 600,
-    marginTop: '-10%',
+    height: '100%',
   },
   courseCard: {
     backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY,
@@ -23,7 +22,9 @@ const style = {
   columnLeft: {
     flex: 6,
     height: '100%',
-    justifyContent: 'space-between',
+    // flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
   columnRight: {
     flex: 4,
@@ -33,7 +34,7 @@ const style = {
   courseLogoContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 6,
+    top: 0,
   },
   courseLogoIconContainer: {
     borderRadius: 15,
@@ -41,8 +42,9 @@ const style = {
     height: 135,
   },
   courseIcon: {
-    width: 175,
-    height: 175,
+    width: 135,
+    height: 135,
+    borderRadius: 15,
   },
   label: {
     color: COLORS.WHITE,
@@ -51,7 +53,6 @@ const style = {
   courseVideoContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 4,
   },
   videoIconContainer: {
     borderRadius: 5,
@@ -96,7 +97,7 @@ const style = {
   seeJourney: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 4,
+    // flex: 4,
   },
 };
 
@@ -106,6 +107,6 @@ export default style;
 //   borderWidth: 1,
 //   borderColor: 'yellow',
 //
-// borderStyle: 'solid',
+//   borderStyle: 'solid',
 //   borderWidth: 1,
 //   borderColor: 'red',

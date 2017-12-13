@@ -4,7 +4,7 @@ const style = {
   sliderItem: {
     // backgroundColor: COLORS.BACKGROUND_COLOR_PRIMARY,
     width: '85%',
-    height: '75%',
+    height: '85%',
     justifyContent: 'center',
     alignContent: 'center',
     borderRadius: 10,
@@ -22,9 +22,15 @@ const style = {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-end',
-    paddingBottom: 10,
+    paddingBottom: 5,
   },
   scoreContainer: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  countContainer: {
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -35,19 +41,27 @@ const style = {
   infoText: {
     fontSize: 12,
     color: COLORS.WHITE,
+    alignSelf: 'center',
   },
   courseLogoContainer: {
-    justifyContent: 'space-around',
+    flex: 4,
+    justifyContent: 'flex-end',
     alignItems: 'center',
+    // borderStyle: 'solid',
+    // borderColor: 'red',
+    // borderWidth: 1,
   },
   logo: {
-    height: 65,
+    height: 55,
     width: 75,
     borderRadius: 5,
   },
   courseTitle: {
-    fontSize: 18,
+    fontSize: 16,
     color: COLORS.WHITE,
+    fontWeight: '500',
+    alignSelf: 'center',
+    textAlign: 'center',
   },
   highlightedQuizIndexContainer: {
     flexDirection: 'row',
@@ -59,11 +73,15 @@ const style = {
     color: COLORS.WHITE,
   },
   backgroundImage: {
+    position: 'absolute',
+    // flex: 1,
+    //
     width: '100%',
     height: '100%',
     borderRadius: 10,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
+    backgroundColor: 'transparent',
   },
   menuContainer: {
     flex: 3,

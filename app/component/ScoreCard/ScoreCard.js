@@ -102,6 +102,7 @@ class ScoreCard extends Component {
             totalTimeSpent={totalTime}
             articleList={read}
           />
+          <ProgressGraph />
           <CallToAction />
         </View>
       </ScrollView>

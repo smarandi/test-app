@@ -10,13 +10,13 @@ const style = {
   },
   mobileViewContainer: {
     ios: {
-      width: 350,
+      // width: 350,
       backgroundColor: COLORS.BACKGROUND_COLOR_SHADE,
       borderRadius: 15,
       padding: 25,
     },
     android: {
-      width: 350,
+      // width: 350,
       backgroundColor: COLORS.BACKGROUND_COLOR_SHADE,
       borderRadius: 15,
       padding: 25,

@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Platform, Image, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Icon, Fab } from 'native-base';
+import { Text, View, Dimensions, Image } from 'react-native';
+// import { Button, Icon, Fab } from 'native-base';
 import Carousel from 'react-native-snap-carousel';
-import Modal from 'react-native-modal';
 
+import { getQuizStatus } from '../../services/Quiz';
 import COLORS from '../../styles/Common/Colors';
 import CourseLogo from '../../assets/img/quiz/course-logo.png';
 import QuizMenuBackground from '../../assets/img/quiz/quiz-background-1.png';
 
 import QuizStyles from '../../styles/Quiz/Quiz';
+import { QuizActions } from './QuizActions';
+import QuizMenuBackgroundLayout from './QuizMenuBackground';
+import QuizMenuTopOverlay from './QuizMenuTopOverlay';
 
 const { width } = Dimensions.get('window');
 
-const entries = [2, 3, 4, 5, 6, 7];
-
-
+@connect(store => ({ auth: store.auth, quiz: store.quiz, explore: store.explore }))
 class Quiz extends Component {
   static navigationOptions = {
     title: 'Quizzes',
@@ -25,19 +27,57 @@ class Quiz extends Component {
 
   static propTypes = {
     navigation: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    quiz: PropTypes.object.isRequired,
+    explore: PropTypes.object.isRequired,
   };
 
-  state = {
-    isModalVisible: false,
-    fabActive: false,
+
+  componentDidMount() {
+    const { token, id } = this.props.auth;
+    // const { uuid } = this.props.navigation.state.params;
+
+    const formData = new FormData();
+    formData.append('course_uuid', 'cede100d9c76');
+
+    getQuizStatus(token, id, formData)
+      .then(data => this.props.dispatch(QuizActions.loadCourseInfo(data)));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps && (this.props.quiz.currentIndex !== nextProps.quiz.currentIndex)) {
+      const { token, id } = this.props.auth;
+      const { data: courses } = this.props.explore;
+      const { currentIndex } = nextProps.quiz;
+      const course_uuid = courses[currentIndex].uuid;
+      const formData = new FormData();
+      // formData.append('course_uuid', course_uuid);
+      formData.append('course_uuid', 'cede100d9c76');
+
+
+      getQuizStatus(token, id, formData)
+        .then(data => this.props.dispatch(QuizActions.loadCourseInfo(data)));
+    }
+  }
+
+  startQuiz = (quizIndex) => {
+    const { token, id } = this.props.auth;
+    const { data: courses } = this.props.explore;
+    const { currentIndex, quizObject } = this.props.quiz;
+    const courseUUID = courses[currentIndex].uuid;
+    const formData = new FormData();
+    // formData.append('course_uuid', courseUUID);
+    formData.append('course_uuid', 'cede100d9c76'); // Remove hardcoded stuff
+    formData.append('uuid', quizIndex.uuid);
+
+    getQuizStatus(token, id, formData)
+      .then((data) => {
+        this.props.dispatch(QuizActions.loadQuizQuestions(data));
+        this.props.navigation.navigate('QuestionAnswer', { courseId: 'cede100d9c76' }); // Remove hardcoded
+      })
+      .catch(() => { /* Handle Catch */ });
   };
-
-  showModal = () => this.setState({ isModalVisible: true });
-
-  hideModal = () => this.setState({ isModalVisible: false });
-
-  handleFabClick = () =>
-    this.setState({ fabActive: !this.state.fabActive, isModalVisible: true });
 
   renderItem = ({ item, index }) => (
     <View style={{
@@ -59,9 +99,9 @@ class Quiz extends Component {
               source={CourseLogo}
               style={QuizStyles.logo}
             />
-            <Text style={QuizStyles.courseTitle}>Graphic Design</Text>
+            <Text style={QuizStyles.courseTitle}>{item.course_name.slice(0, 20)}</Text>
           </View>
-          <View style={QuizStyles.scoreContainer}>
+          <View style={QuizStyles.countContainer}>
             <View style={QuizStyles.highlightedQuizIndexContainer}>
               <Text style={QuizStyles.highlightedText}>4</Text>
               <Text style={QuizStyles.quizCountText}> /10</Text>
@@ -70,37 +110,62 @@ class Quiz extends Component {
           </View>
         </View>
         <View style={QuizStyles.menuContainer}>
+          <QuizMenuBackgroundLayout />
           <Image
             source={QuizMenuBackground}
             style={QuizStyles.backgroundImage}
-            resizeMode="contain"
+            resizeMode="cover"
           />
-          <TouchableOpacity
-            style={Platform.select(QuizStyles.touchableStyle)}
-            onPress={() => this.props.navigation.navigate('QuestionAnswer')}
+          <QuizMenuTopOverlay
+            touchableActionHandler={this.startQuiz}
+            quizList={this.props.quiz.data}
           />
         </View>
       </View>
     </View>
   );
 
+  handleScroll = () => {
+    if (this.props.quiz.currentIndex !== this.carousel.currentIndex) {
+      this.props.dispatch(QuizActions.updateCurrentIndex(this.carousel.currentIndex));
+    }
+  };
+
   render() {
-    return (
-      <View style={{ backgroundColor: COLORS.WHITE }}>
-        <Carousel
-          ref={(c) => { this._carousel = c; }}
-          data={entries}
-          renderItem={this.renderItem}
-          sliderWidth={width}
-          itemWidth={width}
-        />
-      </View>
+    const { data: courses } = this.props.explore;
+    const { data: quizData } = this.props.quiz;
+
+    return (courses.length === 0 ?
+      (<Text>Loading...</Text>) :
+      (
+        <View style={{ backgroundColor: COLORS.WHITE }}>
+          <Carousel
+            ref={(c) => { this.carousel = c; }}
+            data={courses}
+            renderItem={this.renderItem}
+            sliderWidth={width}
+            itemWidth={width}
+            onScroll={() => this.handleScroll()}
+          />
+        </View>
+      )
     );
   }
 }
 
 export default Quiz;
 
+
+// state = {
+// isModalVisible: false,
+// fabActive: false,
+// };
+// showModal = () => this.setState({ isModalVisible: true });
+//
+// hideModal = () => this.setState({ isModalVisible: false });
+//
+// handleFabClick = () =>
+//   this.setState({ fabActive: !this.state.fabActive, isModalVisible: true });
 //
 // <Carousel
 //   ref={(c) => { this._carousel = c; }}

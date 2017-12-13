@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput, TouchableOpacity, Platform, Image } from 'react-native';
+
 import styles from '../../styles/Auth/OTP';
 import AuthStyles from '../../styles/Auth/Auth';
 import background from '../../assets/img/onboardingbackground.png';
@@ -80,24 +81,32 @@ class OTP extends Component {
             <Text style={styles.mobileViewLabel}> mobile number.
               <Text style={styles.changeNumber} accessible onPress={() => this.props.navigation.goBack()}> Change Number</Text>
             </Text>
-            <Text style={styles.resendCode}> Resend Code</Text>
+            {/* <Text style={styles.resendCode}> Resend Code</Text> */}
             <View style={styles.inputContainer}>
               <TextInput
+                keyboardType="numeric"
+                maxLength={1}
                 value={firstDigit}
                 style={mobileNumberInputStyle}
                 onChangeText={text => this.setState({ firstDigit: text })}
               />
               <TextInput
+                keyboardType="numeric"
+                maxLength={1}
                 value={secondDigit}
                 style={mobileNumberInputStyle}
                 onChangeText={text => this.setState({ secondDigit: text })}
               />
               <TextInput
+                keyboardType="numeric"
+                maxLength={1}
                 value={thirdDigit}
                 style={mobileNumberInputStyle}
                 onChangeText={text => this.setState({ thirdDigit: text })}
               />
               <TextInput
+                keyboardType="numeric"
+                maxLength={1}
                 value={fourthDigit}
                 style={mobileNumberInputStyle}
                 onChangeText={text => this.setState({ fourthDigit: text })}

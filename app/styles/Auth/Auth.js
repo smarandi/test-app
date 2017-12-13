@@ -9,6 +9,7 @@ const style = {
   },
   background: {
     flex: 1,
+    height: 800,
   },
   overlayContainer: {
     display: 'flex',
